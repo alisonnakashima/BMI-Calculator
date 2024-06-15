@@ -5,6 +5,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import java.text.NumberFormat
+import java.util.Locale
 import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
@@ -40,32 +42,43 @@ class MainActivity : AppCompatActivity() {
     private fun btLimparOnClick() {
         etPeso.setText( "" )
         etAltura.setText( "" )
-        tvResultado.text = "0.0"
+        tvResultado.text = getString(R.string.zeros)
         etPeso.requestFocus()
-        Toast.makeText( this, "Tela reiniciada", Toast.LENGTH_LONG ).show()
+        Toast.makeText( this, getString(R.string.toast_limpar), Toast.LENGTH_LONG ).show()
     }
 
     private fun btCalcularOnClick() {
 
         if ( etPeso.text.toString().isEmpty() ) {
-            etPeso.error = "Campo Peso deve ser preenchido"
+            etPeso.error =getString(R.string.erro_peso)
             etPeso.requestFocus()
             return
         }
 
 
         if ( etAltura.text.toString().isEmpty() ) {
-            etAltura.error = "Campo Altura deve ser preenchido"
+            etAltura.error = getString(R.string.erro_altura)
             etAltura.requestFocus()
             return
         }
 
         val peso = etPeso.text.toString().toDouble()
         val altura = etAltura.text.toString().toDouble()
+        var imc = 0.0
 
-        val imc = peso / altura.pow( 2 )
+        if ( Locale.getDefault().language.equals("en") ) {
+            imc = (peso/2.20463) / ( (altura/3.28084)*(altura/3.28084) )
+            val nf = NumberFormat.getNumberInstance( Locale.US )
+            tvResultado.text = nf.format( imc )
+            tvResultado.text = "%.2f".format( imc )
+        } else {
+            imc = peso / altura.pow( 2 )
+            val nf = NumberFormat.getNumberInstance( Locale.getDefault() )
+            tvResultado.text = nf.format( imc )
+        }
 
-        tvResultado.text = "%.2f".format( imc )
+
+
 
     }
 }

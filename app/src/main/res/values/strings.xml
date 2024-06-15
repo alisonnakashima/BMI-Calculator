@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">CalculaIMC-4</string>
+    <string name="app_name" translatable="false">Calcula IMC</string>
+    <string name="peso" translatable="false">Peso: </string>
+    <string name="altura" translatable="false">Altura: </string>
+    <string name="hint_peso" translatable="false">Peso em Kg </string>
+    <string name="hint_altura" translatable="false">Altura em m </string>
+    <string name="IMC" translatable="false">IMC: </string>
+    <string name="zeros" translatable="false">0,0 </string>
+    <string name="limpar" translatable="false">Limpar </string>
+    <string name="calcular" translatable="false">Calcular</string>
+    <string name="toast_limpar" translatable="false">Tela reiniciada. </string>
+    <string name="erro_altura" translatable="false">Campo altura deve ser preenchido. </string>
+    <string name="erro_peso" translatable="false">Campo peso deve ser preenchido. </string>
+
+
 </resources>
