@@ -63,9 +63,8 @@ class MainActivity : AppCompatActivity() {
 
         val imc = Calculo()
         val aux = imc.calculaIMC(peso, altura)
-//        aux = "%.2f".format(aux)
         tvResultado.text = "%.2f".format(aux)
-//        tvResultado.text = aux.toString()
+
    }
 
     class Calculo {
