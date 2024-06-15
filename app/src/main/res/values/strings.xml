@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name" translatable="false">Calcula IMC</string>
     <string name="peso" translatable="false">Peso: </string>
     <string name="altura" translatable="false">Altura: </string>
@@ -11,6 +12,5 @@
     <string name="toast_limpar" translatable="false">Tela reiniciada. </string>
     <string name="erro_altura" translatable="false">Campo altura deve ser preenchido. </string>
     <string name="erro_peso" translatable="false">Campo peso deve ser preenchido. </string>
-
 
 </resources>

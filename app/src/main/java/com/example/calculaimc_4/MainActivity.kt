@@ -34,9 +34,6 @@ class MainActivity : AppCompatActivity() {
         btLimpar.setOnClickListener {
             btLimparOnClick()
         }
-
-
-
     }
 
     private fun btLimparOnClick() {
@@ -55,7 +52,6 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-
         if ( etAltura.text.toString().isEmpty() ) {
             etAltura.error = getString(R.string.erro_altura)
             etAltura.requestFocus()
@@ -64,21 +60,29 @@ class MainActivity : AppCompatActivity() {
 
         val peso = etPeso.text.toString().toDouble()
         val altura = etAltura.text.toString().toDouble()
-        var imc = 0.0
 
-        if ( Locale.getDefault().language.equals("en") ) {
-            imc = (peso/2.20463) / ( (altura/3.28084)*(altura/3.28084) )
-            val nf = NumberFormat.getNumberInstance( Locale.US )
-            tvResultado.text = nf.format( imc )
-            tvResultado.text = "%.2f".format( imc )
-        } else {
-            imc = peso / altura.pow( 2 )
-            val nf = NumberFormat.getNumberInstance( Locale.getDefault() )
-            tvResultado.text = nf.format( imc )
+        val imc = Calculo()
+        val aux = imc.calculaIMC(peso, altura)
+//        aux = "%.2f".format(aux)
+        tvResultado.text = "%.2f".format(aux)
+//        tvResultado.text = aux.toString()
+   }
+
+    class Calculo {
+        fun calculaIMC (peso: Double, altura: Double): Double {
+
+            var imc = 0.0
+
+            if (Locale.getDefault().language.equals("en")) {
+                val nf = NumberFormat.getNumberInstance(Locale.US)
+                imc = (peso / 2.20463) / ((altura / 3.28084) * (altura / 3.28084))
+                imc = nf.format(imc).toDouble()
+            } else {
+                val nf = NumberFormat.getNumberInstance(Locale.US)
+                imc = peso / altura.pow(2)
+                imc = nf.format(imc).toDouble()
+            }
+            return imc
         }
-
-
-
-
     }
 }
